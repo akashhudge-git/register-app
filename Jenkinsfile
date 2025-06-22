@@ -15,13 +15,7 @@ pipeline {
 	    
     }
     stages{
-        stage("Cleanup Workspace"){
-                steps {
-                cleanWs()
-                }
-        }
-
-        stage("Checkout from SCM"){
+	stage("Checkout from SCM"){
                 steps {
                     git branch: 'main', credentialsId: 'github', url: 'https://github.com/akashhudge-git/register-app'
                 }
@@ -30,7 +24,7 @@ pipeline {
         stage("Build & Test Application"){
             steps {
                 sh '''
-		    mvn clean package"
+		    mvn clean package
 		    mvn test
       		'''
             }
